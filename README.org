@@ -3,3 +3,5 @@ i have reached the apex of my programming history
 everything can only go down from here
 
 [[file:loop2.gif]]
+
+btw go check out [[https://tradam.itch.io/raylib-drawtexturepro-interactive-demo][this]] (amazing tool, very helpful in committing graphical sins :3)
