@@ -1,4 +1,4 @@
-use std::ffi::c_char;
+use std::ffi::{c_char, c_uchar, c_void};
 
 #[repr(C)]
 #[derive(Clone)]
@@ -26,13 +26,22 @@ pub struct Color {
 }
 
 #[repr(C)]
+pub struct Image {
+	data: *const c_void,
+	width: i32,
+	height: i32,
+	mipmaps: i32,
+	format: i32,
+}
+
+#[repr(C)]
 #[derive(Clone)]
 pub struct Texture2D {
-	pub id: u32,
+	id: u32,
 	pub width: i32,
 	pub height: i32,
-	pub mipmaps: i32,
-	pub format: i32,
+	mipmaps: i32,
+	format: i32,
 }
 
 #[link(name = "raylib")]
@@ -48,7 +57,13 @@ extern "C" {
 	pub fn EndDrawing();
 	pub fn ClearBackground(color: Color);
 
-	pub fn LoadTexture(filename: *const c_char) -> Texture2D;
+	pub fn LoadImageFromMemory(
+		fileType: *const c_char,
+		fileData: *const c_uchar,
+		dataSize: i32,
+	) -> Image;
+
+	pub fn LoadTextureFromImage(image: Image) -> Texture2D;
 	pub fn DrawTexturePro(
 		texture: Texture2D,
 		source: Rectangle,

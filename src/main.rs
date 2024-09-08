@@ -6,7 +6,13 @@ fn main() {
 		InitWindow(800, 600, c"Skirt go Spinny :3".as_ptr());
 		SetTargetFPS(60);
 
-		let skirt = LoadTexture(c"skirt.png".as_ptr());
+		let skirt_data = include_bytes!("skirt.png");
+		let skirt_img = LoadImageFromMemory(
+			c".png".as_ptr(),
+			skirt_data.as_ptr(),
+			skirt_data.len() as i32,
+		);
+		let skirt = LoadTextureFromImage(skirt_img);
 
 		let skirt_rect = Rectangle {
 			x: 0.0,
