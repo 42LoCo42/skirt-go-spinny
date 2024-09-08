@@ -1,14 +1,14 @@
 use std::ffi::{c_char, c_uchar, c_void};
 
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct Vector2 {
 	pub x: f32,
 	pub y: f32,
 }
 
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct Rectangle {
 	pub x: f32,
 	pub y: f32,
@@ -17,7 +17,7 @@ pub struct Rectangle {
 }
 
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct Color {
 	pub r: u8,
 	pub g: u8,
@@ -35,7 +35,7 @@ pub struct Image {
 }
 
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct Texture2D {
 	id: u32,
 	pub width: i32,
